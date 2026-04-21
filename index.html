@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Yasser 🎉</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 3rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.slider {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 60vh; /* responsive height */
+    object-fit: cover; /* prevents stretching */
+    border-radius: 15px;
+}
+
+.active {
+    display: block;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    from { opacity: 0.4 }
+    to { opacity: 1 }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Yasser 🎂</h1>
+
+<div class="slider" id="slider">
+    <!-- Images will be inserted by JavaScript -->
+</div>
+
+<script>
+const slider = document.getElementById("slider");
+
+const totalImages = 50;
+
+for (let i = 1; i <= totalImages; i++) {
+    const img = document.createElement("img");
+    img.src = `images/${i}.jpeg`; // path to images
+    img.classList.add("slide");
+    slider.appendChild(img);
+}
+
+let current = 0;
+const slides = document.getElementsByClassName("slide");
+
+function showSlide(index) {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+    slides[index].classList.add("active");
+}
+
+function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}
+
+// Start slider
+showSlide(current);
+setInterval(nextSlide, 3000); // change every 3 seconds
+</script>
+
+</body>
+</html>
